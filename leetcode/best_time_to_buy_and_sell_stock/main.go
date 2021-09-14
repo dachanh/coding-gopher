@@ -3,12 +3,13 @@ package main
 import "fmt"
 
 func maxProfit(prices []int) int {
+	var minVar = int(1e4)
 	var res = 0
-	for i := 0; i < len(prices)-1; i++ {
-		for j := i + 1; j < len(prices); j++ {
-			if prices[j]-prices[i] > res {
-				res = prices[j] - prices[i]
-			}
+	for i := 0; i < len(prices); i++ {
+		if prices[i] <= minVar {
+			minVar = prices[i]
+		} else if prices[i]-minVar > res {
+			res = prices[i] - minVar
 		}
 	}
 	return res
