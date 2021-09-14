@@ -9,7 +9,7 @@ func Test(t *testing.T) {
 	if maxProfit([]int{7, 6, 4, 3, 1}) != 0 {
 		t.Fatal("Wrong test 2")
 	}
-	if maxProfit([]int{7, 6, 4, 3, 1, 15}) != 14 {
+	if maxProfit([]int{7, 6, 4, 3, 1, 15}) != 11 {
 		t.Fatal("Wrong test 3")
 	}
 }
