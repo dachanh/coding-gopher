@@ -7,7 +7,6 @@ sudo: false
 go:
   - "1.16"
   - "1.12"
-  - tip
 before_install:
   - chmod +x ./.travis.gofmt.sh
 script:
