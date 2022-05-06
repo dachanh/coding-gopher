@@ -10,7 +10,7 @@ func Test(t *testing.T) {
 		t.Fatal("Error test 1")
 	}
 	if !reflect.DeepEqual(isAnagram("rat","car"),false){
-		t.Fatal("Error test 1")
+		t.Fatal("Error test 2")
 	}
 	t.Fatal("PASSED")
 }
