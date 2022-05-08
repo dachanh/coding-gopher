@@ -1,38 +1,19 @@
 package main
 
 func productExceptSelf(nums []int) []int {
+	leftProduct := make([]int,len(nums))
+	rightProduct := make([]int,len(nums))
 	res := make([]int,len(nums))
-	isCheckZero := 0
-	product := 1
-	for it := 0; it < len(nums);it++{
-		if nums[it] == 0{
-			isCheckZero += 1
-		}
+	rightProduct[0] = 1
+	leftProduct[len(nums)-1] = 1
+	for r:= 1 ; r <= len(nums) -1 ; r++{
+		rightProduct[r] = nums[r-1]*rightProduct[r-1]
 	}
-	if isCheckZero == 1{
-		for it := 0 ;it < len(nums);it++{
-			if nums[it] != 0{
-				product = product*nums[it]
-				res[it] = 0
-			}
-		}
-		for it := 0; it < len(nums);it++{
-			if nums[it] == 0{
-				res[it] = product
-			}
-		}
-		return res
-	}else if isCheckZero > 1{
-		for it := 0; it < len(nums);it++ {
-			res[it] = 0
-		}
-		return  res
+	for l:= len(nums)-2; l >= 0; l--{
+		leftProduct[l] = nums[l+1]*leftProduct[l+1]
 	}
-	for it := 0 ;it < len(nums);it++ {
-		product = product*nums[it]
-	}
-	for it := 0 ; it < len(nums);it++{
-		res[it] = product/nums[it]
+	for it:= 0; it < len(nums);it++{
+		res[it] =rightProduct[it]*leftProduct[it]
 	}
 	return res
 }
