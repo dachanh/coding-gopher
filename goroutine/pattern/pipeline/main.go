@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 func main() {
-
+	done := make(chan struct{})
+	defer close(done)
 	generator := func(done chan struct{}, num ...int) <-chan int {
 		stream := make(chan int)
 		go func() {
@@ -47,7 +48,6 @@ func main() {
 		}()
 		return outputstream
 	}
-	done := make(chan struct{})
 	for res := range add(done, multiply(done, add(done, generator(done, 1, 1, 2, 2, 4, 0, 2), 2), 4), 10) {
 		fmt.Println(res)
 	}
